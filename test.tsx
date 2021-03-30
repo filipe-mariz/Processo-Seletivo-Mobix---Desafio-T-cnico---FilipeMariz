@@ -41,11 +41,6 @@ function createData(
       { date: '2020-01-05', customerId: '11091700', amount: 3 },
       { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
     ],
-
-    analise: [
-        { date: '2020-01-05', customerId: '11091700', amount: 3 },
-        { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
-      ],
   };
 }
 
@@ -120,7 +115,7 @@ const rows = [
 export default function CollapsibleTable() {
   return (
     <TableContainer component={Paper}>
-    <Table aria-label="collapsible table">
+      <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
@@ -128,7 +123,7 @@ export default function CollapsibleTable() {
             <TableCell align="right">Calories</TableCell>
             <TableCell align="right">Fat&nbsp;(g)</TableCell>
             <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>            
+            <TableCell align="right">Protein&nbsp;(g)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -137,7 +132,7 @@ export default function CollapsibleTable() {
           ))}
         </TableBody>
       </Table>
-    </TableContainer> 
+    </TableContainer>
   );
 }
 
