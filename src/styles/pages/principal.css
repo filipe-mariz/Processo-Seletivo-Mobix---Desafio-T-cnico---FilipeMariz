@@ -3,9 +3,7 @@
     height: 100vh;
     padding: 5%;
     display: flex;
-    margin: 0%;
-    
-     
+    margin: 0%;    
     background-size: 300%, 300%;
     animation: colors 15s ease infinite;
 }
@@ -15,27 +13,66 @@
     align-content: center;
     text-align: center;
     color: rgb(44, 44, 46);
-}
-
-#landing .wrapper table {
-    position: relative;
-    left: 10px;
-    border: none;
-    border: 0;
-    
-}
-
-#landing .wrapper tr {
     width: 100vw;
     height: 7vh;
     border: none;
 }
 
-#landing .wrapper td {
+#landing .wrapper .tableone {
+    position: relative;
+    left: 10px;
+    border: none;
+    border: 0;    
+}
+
+.modulo {
+    display: flex;
+    margin-left:  10px;
+    margin-top: 10px;
+    
+}
+
+h5{
+    display: flex;
+    margin-left:  12px;
+    margin-top: 10px;
+}
+
+#landing .wrapper .icone {
+    display: flex;
+    margin-top: -12px;
+    
+}
+
+tr {
+    margin-left: 10px;
+}
+
+#landing .wrapper  tr,
+#landing .wrapper .tabeltwo .analise {
+    width: 100px;
+    height: 50px;
+}
+
+
+#landing .wrapper table .modules {
+    background: rgb(202, 206, 206);
+
+}
+#landing .wrapper table .modules .modules {
+    align-self: start;   
+    right: 10px;
+}
+
+
+#landing .wrapper  {
+    width: 100vw;
+    height: 7vh;
     border: none;
 }
 
-#landing .wrapper .all {
+ 
+#landing .wrapper .TabelHead {
     background: rgb(176, 176, 179);
 }
 
@@ -47,6 +84,18 @@
     
     
 }
-#landing .wrapper .module {
-    background: rgb(210, 210, 214);
+.ontem {
+    background: rgb(210, 210, 214);;
+}
+
+#landing .wrapper .cadastrar {
+    background: rgb(176, 176, 179);
+    width: 130px;
+    height: 45px;
+    border: none;
+    border-radius: 40px;    
+}
+
+#landing .wrapper .cadastrar:hover {
+    background: rgb(139, 139, 141);
 }

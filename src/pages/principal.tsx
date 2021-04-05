@@ -1,147 +1,159 @@
 import React from 'react';
-import '../styles/pages/principal.css';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
+import '../styles/pages/principal.css'
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Input from '../components/Inputs';
 
-const useRowStyles = makeStyles({
-  root: {
-    '& > *': {
-      borderBottom: 'unset',
-    },
-  },
-});
+function Principal() {
 
-function createData(
-    analise: string,
-    contas: string,
-    customisacao: string,
-    financeiro: string,
-) {
-  return {
-    analise,
-    contas,
-    customisacao,
-    financeiro,
-    history: [
-      { date: '2020-01-05', customerId: '11091700', amount: 3 },
-      { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
-    ],
-
-    analised: [
-        { date: '2020-01-05', customerId: '11091700', amount: 3 },
-        { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
-      ],
-  };
-}
-
-function Row(props: { row: ReturnType<typeof createData> }) {
-  const { row } = props;
   const [open, setOpen] = React.useState(false);
-  const classes = useRowStyles();
+  const [open1, setOpen1] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+  const [open3, setOpen3] = React.useState(false);
 
   return (
-    <React.Fragment>
-      <TableRow className={classes.root}>
-        <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
-        </TableCell>
-        <TableCell align="right">{row.analise}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box margin={1}>
-              <Typography variant="h6" gutterBottom component="div">
-                History
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
-  );
-}
+    <div id="landing">
+      <div className="wrapper">
+        <table className="tabelone">
+          <tr> 
+            <td width="200px"></td>
+            <td width="200px">Ver listagem</td>
+            <td width="200px">Ver detalhes</td>
+            <td width="200px">Criar</td>
+            <td width="200px">Atualizar</td>
+            <td width="200px">Deletar</td>
+          </tr>
+          <tr className="TabelHead">
+            <td className="all">Todos</td>
+            <Input />
+          </tr>
+          <tr className="modules">
+            <td width="250px" className="modulo">
+              Analise
+              <IconButton className="icone" aria-label="expand row" size="medium" onClick={() => setOpen(!open)}>
+                {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              </IconButton>
+            </td>
+            <Input />
+          </tr>
+        </table>
 
-const rows = [
-  createData('Frozen yoghurt'),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-  createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-  createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-  
-];
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <table className="tabeltwo">
+            <tr className="submodulo">
+              <td width="270px">Análise de conta </td>
+              <Input />
+            </tr>
 
-export default function CollapsibleTable() {
-  return (
-      <div id="landing">
-          <TableContainer component={Paper}>
-          <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-              
-            <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Ver listagem</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>            
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer> 
+            <tr>
+              <td>Análise de transação</td>
+              <Input />
+            </tr>
+          </table>
+
+        </Collapse>
+        <table className="tabelone">
+          <tr className="modules">
+            <td width="250px" className="modulo">
+              Contas
+              <IconButton className="icone" aria-label="expand row" size="medium" onClick={() => setOpen1(!open1)}>
+                {open1 ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              </IconButton>
+            </td>
+            <Input />
+          </tr>
+        </table>
+
+        <Collapse in={open1}>
+          <table className="tabeltwo">
+            <tr className="analise">
+
+              <td width="270px" >Clientes</td>
+              <Input />
+            </tr>
+
+            <tr>
+              <td>Transação</td>
+              <Input />
+            </tr>
+
+            <tr>
+              <td>Contas digitais</td>
+              <Input />
+            </tr>
+          </table>
+
+        </Collapse>
+        <table className="tabelone">
+          <tr className="modules">
+            <td width="250px" className="modulo">
+              Customização
+              <IconButton className="icone" aria-label="expand row" size="medium" onClick={() => setOpen2(!open2)}>
+                {open2 ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              </IconButton>
+            </td>
+            <Input />
+          </tr>
+        </table>
+
+        <Collapse in={open2}>
+          <table className="tabeltwo">
+            <tr className="analise">
+
+              <td width="270px" >Limites e horários</td>
+              <Input />
+            </tr>
+
+            <tr>
+              <td>Tarifas</td>
+              <Input />
+            </tr>
+
+            <tr>
+              <td>Tarifas personalizadas</td>
+              <Input />
+            </tr>
+
+            <tr>
+              <td>Contas</td>
+              <Input />
+            </tr>
+          </table>
+
+        </Collapse>
+
+        <table className="tabelone">
+          <tr className="modules">
+            <td width="250px" className="modulo">
+              Financeiro
+              <IconButton className="icone" aria-label="expand row" size="medium" onClick={() => setOpen3(!open3)}>
+                {open3 ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              </IconButton>
+            </td>
+            <Input />
+          </tr>
+        </table>
+        <Collapse in={open3}>
+          <table className="tabeltwo">
+            <tr className="analise">
+
+              <td width="270px" >Entradas</td>
+              <Input />
+            </tr>
+
+          </table>
+        </Collapse>
+        <br /> <br />
+        <button className="cadastrar">Cadastrar</button>
+        <br /> <br /><br />
+
       </div>
-      
-    
-  );
+
+    </div>
+  )
 }
 
+export default Principal;
 

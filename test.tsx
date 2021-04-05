@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/pages/principal.css'
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
@@ -61,7 +62,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           {row.name}
         </TableCell>
         <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
+        <TableCell align="right">{row.calories}</TableCell>
         <TableCell align="right">{row.carbs}</TableCell>
         <TableCell align="right">{row.protein}</TableCell>
       </TableRow>
